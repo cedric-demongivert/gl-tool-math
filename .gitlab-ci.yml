@@ -23,8 +23,8 @@ build:
   script:
     - generate
     - yarn run production
+    - yarn run doc
     - cp doc dist/doc
-    - cp package.json dist/package.json
   only:
     - tags
   tags:
