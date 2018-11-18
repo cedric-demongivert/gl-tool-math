@@ -10,7 +10,7 @@ test:
   stage: test
   script:
     - npm install
-    - pip install jinja2
+    - python3 -m pip install jinja2
     - ./generate.sh
     - npm run test --coverage
   tags:
@@ -21,7 +21,7 @@ test:
 build:
   stage: build
   script:
-    - pip install jinja2
+    - python3 -m pip install jinja2
     - ./generate.sh
     - npm run production
     - npm run doc
