@@ -10,7 +10,7 @@ test:
   stage: test
   script:
     - npm install
-    - generate
+    - ./generate.sh
     - npm run test --coverage
   tags:
     - NodeJS
@@ -20,7 +20,7 @@ test:
 build:
   stage: build
   script:
-    - generate
+    - ./generate.sh
     - npm run production
     - npm run doc
     - cp doc dist/doc
