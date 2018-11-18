@@ -10,15 +10,18 @@ test:
   stage: test
   script:
     - yarn install
+    - generate
     - yarn run test --coverage
   tags:
     - NodeJS
     - Yarn
     - NPM
+    - Python 3.X
 
 build:
   stage: build
   script:
+    - generate
     - yarn run production
     - cp doc dist/doc
     - cp package.json dist/package.json
@@ -28,6 +31,7 @@ build:
     - NodeJS
     - Yarn
     - NPM
+    - Python 3.X
   artifacts:
     untracked: true
     paths:
