@@ -1,0 +1,47 @@
+stages:
+  - test
+  - build
+  - publish
+
+cache:
+  untracked: true
+
+test:
+  stage: test
+  script:
+    - yarn install
+    - yarn run test --coverage
+  tags:
+    - NodeJS
+    - Yarn
+    - NPM
+
+build:
+  stage: build
+  script:
+    - yarn run production
+    - cp doc dist/doc
+    - cp package.json dist/package.json
+  only:
+    - tags
+  tags:
+    - NodeJS
+    - Yarn
+    - NPM
+  artifacts:
+    untracked: true
+    paths:
+      - ./dist
+
+publish:
+  stage: publish
+  only:
+    - tags
+  script:
+    - npm publish ./dist --access public
+  tags:
+    - NodeJS
+    - Yarn
+    - NPM
+  dependencies:
+    - build
