@@ -23,7 +23,7 @@ build:
   script:
     - python3 -m pip install jinja2
     - ./generate.sh
-    - npm run production
+    - npm run build
     - npm run doc
     - cp doc dist/doc
   only:
