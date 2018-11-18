@@ -36,7 +36,7 @@ class Generator :
     outputDir = os.path.dirname(outputPath)
 
     if not os.path.exists(outputDir) :
-      os.makedirs("./tests")
+      os.makedirs(outputDir)
 
   def generate (self, outputPath, **fields) :
     fullOutputPath = os.path.abspath(

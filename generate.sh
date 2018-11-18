@@ -2,7 +2,6 @@
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 
-mkdir $DIR/tests
 python3 $DIR/generation/generate-vectors.py
 python3 $DIR/generation/generate-vectors-tests.py
 python3 $DIR/generation/generate-vectors-wrappers.py
