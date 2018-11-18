@@ -9,12 +9,11 @@ cache:
 test:
   stage: test
   script:
-    - yarn install
+    - npm install
     - generate
-    - yarn run test --coverage
+    - npm run test --coverage
   tags:
     - NodeJS
-    - Yarn
     - NPM
     - Python 3.X
 
@@ -22,14 +21,13 @@ build:
   stage: build
   script:
     - generate
-    - yarn run production
-    - yarn run doc
+    - npm run production
+    - npm run doc
     - cp doc dist/doc
   only:
     - tags
   tags:
     - NodeJS
-    - Yarn
     - NPM
     - Python 3.X
   artifacts:
@@ -45,7 +43,6 @@ publish:
     - npm publish ./dist --access public
   tags:
     - NodeJS
-    - Yarn
     - NPM
   dependencies:
     - build
