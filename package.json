@@ -1,5 +1,5 @@
 {
-  "name": "@rnp/gl-tool-math",
+  "name": "@cedric-demongivert/gl-tool-math",
   "version": "0.0.1",
   "description": "A math library for webgl.",
   "main": "index.js",
