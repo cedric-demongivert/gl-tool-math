@@ -8,8 +8,8 @@
     "doc": "esdoc",
     "dev": "set NODE_ENV=development | webpack --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
     "build": "set NODE_ENV=production | webpack --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "preversion": "./generate && npm install && npm test",
-    "version": "./generate && npm run build && npm run doc && git add --all",
+    "preversion": "generate && npm install && npm test",
+    "version": "generate && npm run build && npm run doc && git add --all",
     "postversion": "git push && git push --tags"
   },
   "repository": "https://gitlab.cedric-demongivert.com/gl-tool/glkit-math.git",
