@@ -4,7 +4,7 @@
   "description": "A math library for webgl.",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --coverage",
     "doc": "esdoc",
     "dev": "set NODE_ENV=development | webpack --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
     "build": "set NODE_ENV=production | webpack --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
