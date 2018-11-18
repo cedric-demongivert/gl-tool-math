@@ -3,7 +3,7 @@ const pckg = require('./package.json')
 
 const externals = []
 
-for (let name in pckg.dependencies) {
+for (const name in pckg.dependencies) {
   externals.push(new RegExp(`^${name}(\\/.+)?$`))
 }
 
