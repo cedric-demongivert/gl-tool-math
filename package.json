@@ -1,5 +1,5 @@
 {
-  "name": "@rnp/gltool-math",
+  "name": "@rnp/gl-tool-math",
   "version": "0.0.1",
   "description": "A math library for webgl.",
   "main": "index.js",
@@ -9,7 +9,7 @@
     "dev": "set NODE_ENV=development | webpack --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
     "build": "set NODE_ENV=production | webpack --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
   },
-  "repository": "https://gitlab.cedric-demongivert.com/glkit/glkit-math.git",
+  "repository": "https://gitlab.cedric-demongivert.com/gl-tool/glkit-math.git",
   "author": "Cédric DEMONGIVERT <cedric.demongivert@gmail.com>",
   "license": "MIT",
   "private": false,
@@ -33,8 +33,5 @@
     "esdoc-standard-plugin": "^1.0.0",
     "jest": "^23.6.0",
     "regenerator-runtime": "^0.12.1"
-  },
-  "dependencies": {
-    "lodash": "^4.17.11"
   }
 }
