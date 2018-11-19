@@ -1,6 +1,6 @@
 {
   "name": "@cedric-demongivert/gl-tool-math",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "A math library for webgl.",
   "main": "index.js",
   "scripts": {
@@ -38,6 +38,5 @@
     "laravel-mix": "^2.1.14",
     "regenerator-runtime": "^0.12.1"
   },
-  "dependencies": {
-  }
+  "dependencies": {}
 }
