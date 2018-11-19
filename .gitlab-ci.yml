@@ -25,7 +25,7 @@ build:
     - ./generate.sh
     - npm run build
     - npm run doc
-    - cp doc dist/doc
+    - cp -r doc dist/doc
   only:
     - tags
   tags:
