@@ -367,22 +367,22 @@ export function rotate (
   /*% for index in range(rows if rows <= 3 else 3) %*/const cos/*$ components[index]  $*/ = Math.cos(/*$ components[index]  $*/)
   const sin/*$ components[index]  $*/ = Math.sin(/*$ components[index]  $*/)
   /*% endfor %*//*% if rows == 2 %*/
-  const a00 = cosX
-  const a10 = -sinX
-  const a01 = sinX
-  const a11 = cosX
+  const a00 = cosx
+  const a10 = -sinx
+  const a01 = sinx
+  const a11 = cosx
   /*% else %*/
-  const a00 = cosY * cosZ
-  const a10 = cosY * -sinZ
-  const a20 = sinY/*% if rows == 4 %*/
+  const a00 = cosy * cosz
+  const a10 = cosy * -sinz
+  const a20 = siny/*% if rows == 4 %*/
   const a30 = 0/*% endif %*/
-  const a01 = (-sinX * -sinY * cosZ + cosX * sinZ)
-  const a11 = (-sinX * -sinY * -sinZ + cosX * cosZ)
-  const a21 = -sinX * cosY/*% if rows == 4 %*/
+  const a01 = (-sinx * -siny * cosz + cosx * sinz)
+  const a11 = (-sinx * -siny * -sinz + cosx * cosz)
+  const a21 = -sinx * cosy/*% if rows == 4 %*/
   const a31 = 0/*% endif %*/
-  const a02 = (cosX * -sinY * cosZ + sinX * sinZ)
-  const a12 = (cosX * -sinY * -sinZ + sinX * cosZ)
-  const a22 = cosX * cosY/*% if rows == 4 %*/
+  const a02 = (cosx * -siny * cosz + sinx * sinz)
+  const a12 = (cosx * -siny * -sinz + sinx * cosz)
+  const a22 = cosx * cosy/*% if rows == 4 %*/
   const a32 = 0
   const a03 = 0
   const a13 = 0
@@ -537,22 +537,22 @@ export function toRotation (
   /*% for index in range(rows if rows <= 3 else 3) %*/const cos/*$ components[index]  $*/ = Math.cos(/*$ components[index]  $*/)
   const sin/*$ components[index]  $*/ = Math.sin(/*$ components[index]  $*/)
   /*% endfor %*//*% if rows == 2 %*/
-  matrixBuffer[matrixBufferOffset + 0] = cosX
-  matrixBuffer[matrixBufferOffset + 1] = -sinX
-  matrixBuffer[matrixBufferOffset + 2] = sinX
-  matrixBuffer[matrixBufferOffset + 3] = cosX
+  matrixBuffer[matrixBufferOffset + 0] = cosx
+  matrixBuffer[matrixBufferOffset + 1] = -sinx
+  matrixBuffer[matrixBufferOffset + 2] = sinx
+  matrixBuffer[matrixBufferOffset + 3] = cosx
   /*% else %*/
-  matrixBuffer[matrixBufferOffset + 0] = cosY * cosZ
-  matrixBuffer[matrixBufferOffset + 1] = cosY * -sinZ
-  matrixBuffer[matrixBufferOffset + 2] = sinY/*% if rows == 4 %*/
+  matrixBuffer[matrixBufferOffset + 0] = cosy * cosz
+  matrixBuffer[matrixBufferOffset + 1] = cosy * -sinz
+  matrixBuffer[matrixBufferOffset + 2] = siny/*% if rows == 4 %*/
   matrixBuffer[matrixBufferOffset + 3] = 0/*% endif %*/
-  matrixBuffer[matrixBufferOffset + /*$ columns $*/] = (-sinX * -sinY * cosZ + cosX * sinZ)
-  matrixBuffer[matrixBufferOffset + /*$ columns + 1 $*/] = (-sinX * -sinY * -sinZ + cosX * cosZ)
-  matrixBuffer[matrixBufferOffset + /*$ columns + 2 $*/] = -sinX * cosY/*% if rows == 4 %*/
+  matrixBuffer[matrixBufferOffset + /*$ columns $*/] = (-sinx * -siny * cosz + cosx * sinz)
+  matrixBuffer[matrixBufferOffset + /*$ columns + 1 $*/] = (-sinx * -siny * -sinz + cosx * cosz)
+  matrixBuffer[matrixBufferOffset + /*$ columns + 2 $*/] = -sinx * cosy/*% if rows == 4 %*/
   matrixBuffer[matrixBufferOffset + /*$ columns + 3 $*/] = 0/*% endif %*/
-  matrixBuffer[matrixBufferOffset + /*$ columns * 2 + 0 $*/] = (cosX * -sinY * cosZ + sinX * sinZ)
-  matrixBuffer[matrixBufferOffset + /*$ columns * 2 + 1 $*/] = (cosX * -sinY * -sinZ + sinX * cosZ)
-  matrixBuffer[matrixBufferOffset + /*$ columns * 2 + 2 $*/] = cosX * cosY/*% if rows == 4 %*/
+  matrixBuffer[matrixBufferOffset + /*$ columns * 2 + 0 $*/] = (cosx * -siny * cosz + sinx * sinz)
+  matrixBuffer[matrixBufferOffset + /*$ columns * 2 + 1 $*/] = (cosx * -siny * -sinz + sinx * cosz)
+  matrixBuffer[matrixBufferOffset + /*$ columns * 2 + 2 $*/] = cosx * cosy/*% if rows == 4 %*/
   matrixBuffer[matrixBufferOffset + /*$ columns * 2 + 3 $*/] = 0
   matrixBuffer[matrixBufferOffset + /*$ columns * 3 + 0 $*/] = 0
   matrixBuffer[matrixBufferOffset + /*$ columns * 3 + 1 $*/] = 0
