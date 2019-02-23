@@ -1,6 +1,6 @@
 node_modules
 src/matrix
-src/vector
+src/vector*
 tests/matrix.*.spec.js
 tests/vector.*.spec.js
 **/__pycache__
