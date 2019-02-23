@@ -1,5 +1,5 @@
 node_modules
-src/matrix
+src/matrix*
 src/vector*
 tests/matrix.*.spec.js
 tests/vector.*.spec.js
