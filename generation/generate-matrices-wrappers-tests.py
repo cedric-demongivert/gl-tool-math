@@ -29,11 +29,11 @@ for key, (buffer, name) in types.items() :
   for dimension in dimensions :
     print (
       '- generating {0}...'.format(
-        'tests/matrix.Matrix{0}{1}.spec.js'.format(dimension, key)
+        'tests/wrapper.Matrix{0}{1}.spec.js'.format(dimension, key)
       )
     )
     generator.generate_test(
-      'matrix.Matrix{0}{1}.spec.js'.format(dimension, key),
+      'wrapper.Matrix{0}{1}.spec.js'.format(dimension, key),
       primes = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29],
       matrix_type = key,
       matrix_type_name = name,

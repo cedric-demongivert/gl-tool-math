@@ -1,5 +1,6 @@
 from jinja2 import Template, Environment, FileSystemLoader
 from .project import ROOT_DIRECTORY
+from .GenerationResult import GenerationResult
 import os
 
 TEMPLATE_LOADER = FileSystemLoader('{0}/templates'.format(ROOT_DIRECTORY))
@@ -37,6 +38,30 @@ class Generator :
 
     if not os.path.exists(outputDir) :
       os.makedirs(outputDir)
+
+  def generate_source_directory (self, directory: str):
+    full_directory = os.path.abspath(os.path.join(
+        ROOT_DIRECTORY, 'src', directory
+    ))
+
+    print('- Generating source directory "{0}"...'.format(full_directory))
+    if not os.path.exists(full_directory) :
+      os.makedirs(full_directory)
+      print('- Directory "{0}" generated.'.format(full_directory))
+    else:
+      print('- Directory "{0}" already generated.'.format(full_directory))
+
+  def generate_template (self, template):
+      parameters = template.get_parameters()
+
+      with open(template.get_file(), 'r') as file:
+        return GenerationResult(
+          self._script_environment.from_string(
+            self._comment_environment.from_string(
+                file.read()
+            ).render(**parameters)
+          ).render(**parameters)
+        )
 
   def generate (self, outputPath, **fields) :
     fullOutputPath = os.path.abspath(

@@ -24,11 +24,11 @@ for key, (buffer, name) in types.items() :
   for dimension in dimensions :
     print (
       '- generating {0}...'.format(
-        'tests/vector.Vector{0}{1}.spec.js'.format(dimension, key)
+        'tests/wrapper.Vector{0}{1}.spec.js'.format(dimension, key)
       )
     )
     generator.generate_test(
-      'vector.Vector{0}{1}.spec.js'.format(dimension, key),
+      'wrapper.Vector{0}{1}.spec.js'.format(dimension, key),
       vector_type = key,
       vector_type_name = name,
       dimension = dimension,

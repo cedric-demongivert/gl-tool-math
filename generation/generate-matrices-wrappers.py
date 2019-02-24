@@ -44,12 +44,12 @@ for key, (buffer, name) in types.items() :
   for dimension in dimensions :
     print (
       '- generating {0}...'.format(
-        'src/matrix/Matrix{0}{1}.js'.format(dimension, key)
+        'src/Matrix{0}{1}.js'.format(dimension, key)
       )
     )
 
     generator.generate(
-      'matrix/Matrix{0}{1}.js'.format(dimension, key),
+      'Matrix{0}{1}.js'.format(dimension, key),
       matrix_type = key,
       matrix_type_name = name,
       matrix_elements = matrix_elements,
@@ -61,12 +61,3 @@ for key, (buffer, name) in types.items() :
       components = ['x', 'y', 'z', 'w'],
       print_rows = print_rows
     )
-
-index = []
-
-for key, (buffer, name) in types.items() :
-  for dimension in dimensions :
-    index.append("export {0} Matrix{2}{3} {1} from './Matrix{2}{3}'".format('{', '}', dimension, key))
-
-with open('./src/matrix/index.js', 'w') as output :
-  output.write('\n\r'.join(index))

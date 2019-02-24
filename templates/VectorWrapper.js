@@ -1,5 +1,10 @@
-import * as vector from './raw/vector{{vector_dimension}}{{vector_type}}'
+import * as vector from './vector{{vector_dimension}}{{vector_type}}'
 
+/**
+* Create a new {{vector_dimension}} {{vector_type_name}} vector.
+*
+* @param {{ '{' }}{{vector_buffer_type}}{{ '}' }} [buffer = new {{vector_buffer_type}}({{vector_dimension}})] - A buffer to wrap.
+*/
 export class Vector{{vector_dimension}}{{vector_type}} {{ '{' }}
   /**
   * Create a new {{vector_dimension}} {{vector_type_name}} vector with initial data.
@@ -41,11 +46,6 @@ export class Vector{{vector_dimension}}{{vector_type}} {{ '{' }}
     return result
   {{ '}' }}
 
-  /**
-  * Create a new {{vector_dimension}} {{vector_type_name}} vector.
-  *
-  * @param {{ '{' }}{{vector_buffer_type}}{{ '}' }} [buffer = new {{vector_buffer_type}}({{vector_dimension}})] - A buffer to wrap.
-  */
   constructor (buffer = new {{vector_buffer_type}}({{vector_dimension}})) {{ '{' }}
     this._buffer = buffer
   {{ '}' }}

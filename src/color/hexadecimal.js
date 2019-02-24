@@ -1,4 +1,8 @@
-import { Vector4f, Vector3f, Vector4d, Vector3d } from '../vector'
+import { Vector4f, Vector3f, Vector4d, Vector3d } from '..'
+
+/**
+* @module hexadecimal
+*/
 
 /**
 * Return an hexadecimal representation of an rgba color.
@@ -18,7 +22,7 @@ export function encode (red, green, blue, alpha) {
 }
 
 /**
-* Return an hexadecimal representation of a vector 4f.
+* Return an hexadecimal representation of a 4D float vector.
 *
 * @param {Vector4f} color - A color to encode.
 *
@@ -29,7 +33,7 @@ export function encodeVector4f (color) {
 }
 
 /**
-* Return an hexadecimal representation of a vector 3f.
+* Return an hexadecimal representation of a 3D float vector.
 *
 * @param {Vector3f} color - A color to encode.
 *
@@ -40,7 +44,7 @@ export function encodeVector3f (color) {
 }
 
 /**
-* Return an hexadecimal representation of a vector 4f.
+* Return an hexadecimal representation of a vector 4d.
 *
 * @param {Vector4d} color - A color to encode.
 *
@@ -51,7 +55,7 @@ export function encodeVector4d (color) {
 }
 
 /**
-* Return an hexadecimal representation of a vector 3f.
+* Return an hexadecimal representation of a vector 3d.
 *
 * @param {Vector3d} color - A color to encode.
 *

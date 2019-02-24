@@ -1,6 +1,6 @@
 /* eslint-env jest */
 
-import { vector/*$ dimension $*//*$ vector_type $*/ as vector } from '@library/vector/raw'
+import { vector/*$ dimension $*//*$ vector_type $*/ as vector } from '@library'
 
 describe('vector.raw.vector/*$ dimension $*//*$ vector_type $*/', function () {
   describe('#toString', function () {

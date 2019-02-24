@@ -1,6 +1,6 @@
 /* eslint-env jest */
 
-import { matrix/*$ columns $*//*$ matrix_type $*/ as matrix } from '@library/matrix/raw'
+import { matrix/*$ columns $*//*$ matrix_type $*/ as matrix } from '@library'
 
 describe('matrix.raw.matrix/*$ columns $*//*$ matrix_type $*/', function () {
   describe('#toString', function () {

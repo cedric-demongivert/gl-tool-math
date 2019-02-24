@@ -1,5 +1,10 @@
-import * as matrix from './raw/matrix/*$ columns $*//*$ matrix_type $*/'
+import * as matrix from './matrix/*$ columns $*//*$ matrix_type $*/'
 
+/**
+* Wrap a <$ matrix_buffer_type $> as a <$ columns $> by <$ rows $> matrix.
+*
+* @param {<$ matrix_buffer_type $>} [buffer = new <$ matrix_buffer_type $>(<$ columns * rows $>)] - A buffer to wrap.
+*/
 export class Matrix/*$ columns $*//*$ matrix_type $*/ {
   /**
   * Create a new <$ columns $> by <$ rows $> <$ matrix_type_name $> matrix with initial content.
@@ -44,11 +49,6 @@ export class Matrix/*$ columns $*//*$ matrix_type $*/ {
     return result
   }
 
-  /**
-  * Wrap a <$ matrix_buffer_type $> as a <$ columns $> by <$ rows $> matrix.
-  *
-  * @param {<$ matrix_buffer_type $>} [buffer = new <$ matrix_buffer_type $>(<$ columns * rows $>)] - A buffer to wrap.
-  */
   constructor (buffer = new /*$ matrix_buffer_type $*/(/*$ columns * rows $*/)) {
     this._buffer = buffer
   }

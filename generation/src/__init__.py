@@ -9,3 +9,6 @@ from .random_vector import random_vector
 from .random_vector_cell import random_vector_cell
 from .print_rows import print_rows
 from .transpose import transpose
+from .Template import Template
+from .TemplateLoader import TemplateLoader
+from .GenerationResult import GenerationResult

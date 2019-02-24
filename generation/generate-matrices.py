@@ -1,4 +1,4 @@
-from src import Generator
+from src import TemplateLoader, Generator, GenerationResult
 from src import cells
 from src import index
 from src import offset
@@ -56,9 +56,9 @@ def determinant_to_string (det) :
   return ' + '.join([' * '.join(entries) for entries in det['adds']]) + ' - ' + ' - '.join([' * '.join(entries) for entries in det['subs']])
 
 types = {
-  "f": ("Float32Array", "float"),
-  "d": ("Float64Array", "double"),
-  "i": ("Int32Array", "integer"),
+  ("f", "Float32Array", "float"),
+  ("d", "Float64Array", "double"),
+  ("i", "Int32Array", "integer"),
   #"ui": ("Uint32Array", "unsigned integer"),
   #"s": ("Int16Array", "short"),
   #"us": ("Uint16Array", "unsigned short"),
@@ -68,42 +68,49 @@ types = {
 
 dimensions = [2, 3, 4]
 
-generator.use('matrix.js')
+templates = TemplateLoader('./templates/matrix').templates('*.js')
 
-for key, (buffer, name) in types.items() :
-  for dimension in dimensions :
-    print (
-      '- generating {0}...'.format(
-        'src/matrix/raw/matrix{0}{1}.js'.format(dimension, key)
-      )
-    )
-    generator.generate(
-      'matrix/raw/matrix{0}{1}.js'.format(dimension, key),
-      matrix_type = key,
-      matrix_type_name = name,
-      index = index,
-      cells = lambda : cells(dimension, dimension),
-      offset = lambda column, row : offset(column, row, dimension),
-      columns = dimension,
-      rows = dimension,
-      matrix_buffer_type = buffer,
-      determinant = determinant,
-      determinant_to_string = determinant_to_string,
-      components = ['x', 'y', 'z', 'w'],
-      print_rows = print_rows
-    )
+for matrix_type, matrix_buffer_type, matrix_type_name in types:
+    for matrix_dimension in dimensions:
+        index_elements = []
 
-index = []
+        generator.generate_source_directory(
+            './matrix{0}{1}'.format(matrix_dimension, matrix_type)
+        )
 
-for key, (buffer, name) in types.items() :
-  for dimension in dimensions :
-    index.append("import * as matrix{0}{1} from './matrix{0}{1}'".format(dimension, key))
+        for template in templates:
+            print('- generating template "{0}" ...'.format(template.get_file()))
+            template.set_parameters(
+                matrix_type = matrix_type,
+                matrix_type_name = matrix_type_name,
+                index = index,
+                cells = lambda : cells(matrix_dimension, matrix_dimension),
+                offset = lambda column, row : offset(column, row, matrix_dimension),
+                columns = matrix_dimension,
+                rows = matrix_dimension,
+                matrix_buffer_type = matrix_buffer_type,
+                determinant = determinant,
+                determinant_to_string = determinant_to_string,
+                components = ['x', 'y', 'z', 'w'],
+                print_rows = print_rows
+            )
 
-index.append("")
+            result = generator.generate_template(template)
 
-for key, (buffer, name) in types.items() :
-  for dimension in dimensions :
-    index.append("export {0} matrix{1}{2} {3}".format('{', dimension, key, '}'))
+            print('- template "{0}" generated.'.format(template.get_file()))
+            if not result.is_empty():
+                index_elements.append(template.get_name()[0:-3])
+                result.write_as_source('./matrix{0}{1}/{2}'.format(
+                    matrix_dimension,
+                    matrix_type,
+                    template.get_name()
+                ))
 
-with open('./src/matrix/raw/index.js', 'w') as output :
-  output.write('\n\r'.join(index))
+        GenerationResult(
+            '\n\r'.join([
+                'export { ' + name + ' } from \'./' + name + '.js\'' for name in index_elements
+            ])
+        ).write_as_source('./matrix{0}{1}/index.js'.format(
+            matrix_dimension,
+            matrix_type
+        ))

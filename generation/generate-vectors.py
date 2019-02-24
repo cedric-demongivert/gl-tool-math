@@ -1,52 +1,55 @@
-from jinja2 import Template
-import os
+from src import TemplateLoader, Generator, GenerationResult
 
-if not os.path.exists("./src/vector/raw"):
-  os.makedirs("./src/vector/raw")
-
-with open('./templates/vector.js', 'r') as template_file :
-  template = Template(template_file.read())
-
-  types = {
-    "f": ("Float32Array", "float"),
-    "d": ("Float64Array", "double"),
-    "i": ("Int32Array", "integer"),
+types = [
+    ("f", "Float32Array", "float"),
+    ("d", "Float64Array", "double"),
+    ("i", "Int32Array", "integer"),
     #"ui": ("Uint32Array", "unsigned integer"),
     #"s": ("Int16Array", "short"),
     #"us": ("Uint16Array", "unsigned short"),
     #"b": ("Int8Array", "byte"),
     #"ub": ("Uint8Array", "unsigned byte")
-  }
+]
 
-  dimensions = [2, 3, 4]
+dimensions = [2, 3, 4]
 
-  for key, (buffer, name) in types.items() :
-    for dimension in dimensions :
-      with open('./src/vector/raw/vector{0}{1}.js'.format(dimension, key), 'w') as output :
-        print (
-          '- generating {0}...'.format(
-            'src/vector/raw/vector{0}{1}.js'.format(dimension, key)
-          )
+templates = TemplateLoader('./templates/vector').templates('*.js')
+
+generator = Generator()
+
+for vector_type, vector_buffer_type, vector_type_name in types:
+    for vector_dimension in dimensions:
+        index = []
+
+        generator.generate_source_directory(
+            './vector{0}{1}'.format(vector_dimension, vector_type)
         )
-        output.write(template.render(
-          vector_type = key,
-          vector_type_name = name,
-          vector_dimension = dimension,
-          vector_buffer_type = buffer,
-          components = ['x', 'y', 'z', 'w']
+
+        for template in templates:
+            print('- generating template "{0}" ...'.format(template.get_file()))
+            template.set_parameters(
+                vector_type = vector_type,
+                vector_buffer_type = vector_buffer_type,
+                vector_type_name = vector_type_name,
+                vector_dimension = vector_dimension
+            )
+
+            result = generator.generate_template(template)
+
+            print('- template "{0}" generated.'.format(template.get_file()))
+            if not result.is_empty():
+                index.append(template.get_name()[0:-3])
+                result.write_as_source('./vector{0}{1}/{2}'.format(
+                    vector_dimension,
+                    vector_type,
+                    template.get_name()
+                ))
+
+        GenerationResult(
+            '\n\r'.join([
+                'export { ' + name + ' } from \'./' + name + '.js\'' for name in index
+            ])
+        ).write_as_source('./vector{0}{1}/index.js'.format(
+            vector_dimension,
+            vector_type
         ))
-
-  index = []
-
-  for key, (buffer, name) in types.items() :
-    for dimension in dimensions :
-      index.append("import * as vector{0}{1} from './vector{0}{1}'".format(dimension, key))
-
-  index.append("")
-
-  for key, (buffer, name) in types.items() :
-    for dimension in dimensions :
-      index.append("export {0} vector{1}{2} {3}".format('{', dimension, key, '}'))
-
-  with open('./src/vector/raw/index.js', 'w') as output :
-    output.write('\n\r'.join(index))

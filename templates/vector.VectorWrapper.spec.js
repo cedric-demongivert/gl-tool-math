@@ -1,6 +1,6 @@
 /* eslint-env jest */
 
-import { Vector/*$ dimension $*//*$ vector_type $*/ as Vector } from '@library/vector'
+import { Vector/*$ dimension $*//*$ vector_type $*/ as Vector } from '@library'
 
 describe('vector.Vector/*$ dimension $*//*$ vector_type $*/', function () {
   describe('#create', function () {
