@@ -1,8 +1,9 @@
 node_modules
 src/matrix*
 src/vector*
-tests/matrix.*.spec.js
-tests/vector.*.spec.js
+tests/wrapper.*.spec.js
+tests/matrix*.spec.js
+tests/vector*.spec.js
 **/__pycache__
 dist
 doc
