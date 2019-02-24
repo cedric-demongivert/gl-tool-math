@@ -1,4 +1,5 @@
-/*% if matrix_type in ['f', 'd'] %*/
+/*% if matrix_type in ['f', 'd'] %*/import { determinant } from './determinant'
+
 /**
 * Invert a <$ columns $> by <$ rows $> <$ matrix_type_name $> buffered matrix and write the result into another buffer.
 *

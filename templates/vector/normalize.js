@@ -1,4 +1,6 @@
-/*% if vector_type in ['d', 'f'] %*//**
+/*% if vector_type in ['d', 'f'] %*/import { length } from './length'
+
+/**
 * Normalize a <$ vector_dimension $> <$ vector_type_name $> buffered vector and set the result into another buffer.
 *
 * @param {<$ vector_buffer_type $>} vectorBuffer - Buffer to read.

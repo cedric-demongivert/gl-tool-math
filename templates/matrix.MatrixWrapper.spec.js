@@ -226,7 +226,7 @@ describe('matrix.Matrix/*$ columns $*//*$ matrix_type $*/', function () {
 
   /*% if matrix_type in ['f', 'd'] %*/
   describe('#invert', function () {
-    it('transpose the current matrix', function () {
+    it('invert the current matrix', function () {
       /*% set invmatrix = [
         5, 7, 2, 4,
         2, 3, 0, 1,

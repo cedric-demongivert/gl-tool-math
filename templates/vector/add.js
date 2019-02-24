@@ -1,5 +1,9 @@
 /**
-* Compute the addition of two <$ vector_dimension $> <$ vector_type_name $> buffered vectors and put the result into another buffer.
+* Perform an addition of two <$ vector_dimension $> <$ vector_type_name $> vectors.
+*
+* This function take each components of two <$ vector_dimension $> <$ vector_type_name $> vectors
+* stored into two <$ vector_buffer_type $> and put the result of their addition
+* into another <$ vector_buffer_type $>.
 *
 * @param {<$ vector_buffer_type $>} leftBuffer - Buffer that contains the left operand.
 * @param {number} leftBufferOffset - Offset to use when we read the buffer that contains the left operand.
@@ -22,7 +26,7 @@ export function add (
   /*% endfor %*/
   /*% for index in range(vector_dimension) %*/const b/*$ index $*/  = rightBuffer[rightBufferOffset + /*$ index $*/ ]
   /*% endfor %*/
-  /*% for index in range(vector_dimension) %*/resultBuffer[resultBufferOffset + /*$ index $*/ ] = a/*$ index $*/  + b/*$ index $*/ 
+  /*% for index in range(vector_dimension) %*/resultBuffer[resultBufferOffset + /*$ index $*/ ] = a/*$ index $*/  + b/*$ index $*/
   /*% endfor %*/
   return resultBuffer
 }

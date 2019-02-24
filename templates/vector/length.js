@@ -1,3 +1,5 @@
+import { squaredLength } from './squaredLength'
+
 /**
 * Return the length of a <$ vector_dimension $> <$ vector_type_name $> buffered vector.
 *

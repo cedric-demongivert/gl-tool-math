@@ -2,15 +2,15 @@ import * as Color from './color'
 
 export { Color }
 
-import * as vector2d from './vector2d'
-import * as vector2f from './vector2f'
-import * as vector2i from './vector2i'
-import * as vector3d from './vector2d'
-import * as vector3f from './vector2f'
-import * as vector3i from './vector2i'
-import * as vector4d from './vector4d'
-import * as vector4f from './vector4f'
-import * as vector4i from './vector4i'
+import * as vector2d from './vector2d/index'
+import * as vector2f from './vector2f/index'
+import * as vector2i from './vector2i/index'
+import * as vector3d from './vector3d/index'
+import * as vector3f from './vector3f/index'
+import * as vector3i from './vector3i/index'
+import * as vector4d from './vector4d/index'
+import * as vector4f from './vector4f/index'
+import * as vector4i from './vector4i/index'
 
 export {
   vector2d, vector2f, vector2i,
@@ -28,15 +28,15 @@ export { Vector4d } from './Vector4d'
 export { Vector4f } from './Vector4f'
 export { Vector4i } from './Vector4i'
 
-import * as matrix2f from './matrix2f'
-import * as matrix2d from './matrix2d'
-import * as matrix2i from './matrix2i'
-import * as matrix3f from './matrix3f'
-import * as matrix3d from './matrix3d'
-import * as matrix3i from './matrix3i'
-import * as matrix4f from './matrix4f'
-import * as matrix4d from './matrix4d'
-import * as matrix4i from './matrix4i'
+import * as matrix2f from './matrix2f/index'
+import * as matrix2d from './matrix2d/index'
+import * as matrix2i from './matrix2i/index'
+import * as matrix3f from './matrix3f/index'
+import * as matrix3d from './matrix3d/index'
+import * as matrix3i from './matrix3i/index'
+import * as matrix4f from './matrix4f/index'
+import * as matrix4d from './matrix4d/index'
+import * as matrix4i from './matrix4i/index'
 
 export {
   matrix2f, matrix2d, matrix2i,

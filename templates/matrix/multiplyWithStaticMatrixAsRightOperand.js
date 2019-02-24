@@ -1,8 +1,8 @@
 /**
 * Multiply a <$ columns $> by <$ rows $> <$ matrix_type_name $> buffered matrix with another static matrix, the buffered matrix will be used as a left operand.
 *
-* @param {<$ matrix_buffer_type $>} matrixBuffer - Buffer that contains the left operand matrix.
-* @param {number} matrixBufferOffset - Offset to apply when we read the first buffer.
+* @param {<$ matrix_buffer_type $>} leftBuffer - Buffer that contains the left operand matrix.
+* @param {number} leftBufferOffset - Offset to apply when we read the first buffer.
 <% for cell in cells() %>* @param {number} a<$ cell.index $> - Value of the cell of the column <$ cell.column $> and row <$ cell.row $> of the static matrix.
 <% endfor %>
 * @param {<$ matrix_buffer_type $>} resultBuffer - Buffer to write.

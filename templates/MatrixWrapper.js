@@ -1,4 +1,4 @@
-import * as matrix from './matrix/*$ columns $*//*$ matrix_type $*/'
+import * as matrix from './matrix/*$ columns $*//*$ matrix_type $*//index'
 
 /**
 * Wrap a <$ matrix_buffer_type $> as a <$ columns $> by <$ rows $> matrix.
@@ -9,7 +9,8 @@ export class Matrix/*$ columns $*//*$ matrix_type $*/ {
   /**
   * Create a new <$ columns $> by <$ rows $> <$ matrix_type_name $> matrix with initial content.
   *
-  * @param {...number} content - Content of new <$ columns $> by <$ rows $> <$ matrix_type_name $> matrix in row-major order.
+  <% for cell in cells() %>* @param {number} a<$ cell.index $> - Value of the cell at column <$ cell.column $> and row <$ cell.row $> of the matrix.<% if loop.nextitem is defined %>
+  <% endif %><% endfor %>
   *
   * @return {Matrix<$ columns $><$ matrix_type $>} A new <$ columns $> by <$ rows $> <$ matrix_type_name $> matrix with the given initial content.
   */
@@ -136,7 +137,8 @@ export class Matrix/*$ columns $*//*$ matrix_type $*/ {
   /**
   * Set this matrix content.
   *
-  * @param {...number} content - New content of this <$ columns $> by <$ rows $> <$ matrix_type_name $> matrix in row-major order.
+  <% for cell in cells() %>* @param {number} a<$ cell.index $> - Value of the cell at column <$ cell.column $> and row <$ cell.row $> of the matrix.<% if loop.nextitem is defined %>
+  <% endif %><% endfor %>
   *
   * @return {Matrix<$ columns $><$ matrix_type $>} The updated instance of this matrix for chaining purpose.
   */

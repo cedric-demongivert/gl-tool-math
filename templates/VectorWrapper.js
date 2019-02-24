@@ -1,4 +1,4 @@
-import * as vector from './vector{{vector_dimension}}{{vector_type}}'
+import * as vector from './vector{{vector_dimension}}{{vector_type}}/index'
 
 /**
 * Create a new {{vector_dimension}} {{vector_type_name}} vector.
