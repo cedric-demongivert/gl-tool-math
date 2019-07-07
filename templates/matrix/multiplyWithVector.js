@@ -22,7 +22,7 @@ export function multiplyWithVector (
   /*% endfor %*/
   /*% for index in range(rows) %*/const b0/*$ index $*/ = vectorBuffer[vectorBufferOffset + /*$ index $*/]
   /*% endfor %*/
-  /*% for column in range(columns) %*/resultBuffer[resultBufferOffset + /*$ column $*/] = /*% for row in range(rows) %*/a/*$ index(column, row) $*/ * b0/*$ column $*//*% if loop.nextitem is defined %*/ + /*% endif %*//*% endfor %*/
+  /*% for row in range(rows) %*/resultBuffer[resultBufferOffset + /*$ row $*/] = /*% for column in range(columns) %*/a/*$ index(column, row) $*/ * b/*$ index(0, column) $*//*% if loop.nextitem is defined %*/ + /*% endif %*//*% endfor %*/
   /*% endfor %*/
   return resultBuffer
 }

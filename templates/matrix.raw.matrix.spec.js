@@ -203,9 +203,8 @@ describe('matrix.raw.matrix/*$ columns $*//*$ matrix_type $*/', function () {
     it('allows you to multiply a matrix with a vector of same dimension', function () {
       const matrixBuffer = new /*$ matrix_buffer_type $*/([
         1, 2, 3, 4,
-        /*% for row in print_rows(random_matrix(0)) : %*//*$ row $*//*% if loop.nextitem is defined %*/
-        /*% endif %*//*% endfor %*/,
-        /*% for row in range(rows) : %*//*$ 1 if row == 1 else 0 $*//*% if loop.nextitem is defined %*/, /*% endif %*//*% endfor %*/
+        /*% for cell in cells() : %*//*% if cell.row == cell.column %*//*$ 1 $*//*% elif cell.column == rows - 1 %*//*$ cell.row + 1 $*//*% else %*//*$ 0 $*//*% endif %*/, /*% if cell.rowend or not loop.nextitem is defined %*/
+        /*% endif %*//*% endfor %*//*% for row in range(rows) : %*//*$ 1 if row == rows - 1 else row $*//*% if loop.nextitem is defined %*/, /*% endif %*//*% endfor %*/
       ])
 
       matrix.multiplyWithVector(
@@ -216,10 +215,10 @@ describe('matrix.raw.matrix/*$ columns $*//*$ matrix_type $*/', function () {
 
       expect(matrixBuffer).toEqual(new /*$ matrix_buffer_type $*/([
         1, 2, 3, 4,
-        /*% for cell in cells() : %*//*% if cell.offset < rows * columns - 1 %*//*$ random_matrix_cell(0, cell.column, cell.row) $*//*$ cell.separator $*//*% if cell.rowend or not loop.nextitem is defined %*/
+        /*% for cell in cells() : %*//*% if cell.column != rows - 1 or cell.row != rows - 1 %*//*% if cell.row == cell.column %*//*$ 1 $*//*% elif cell.column == rows - 1 %*//*$ cell.row + 1 $*//*% else %*//*$ 0 $*//*% endif %*/, /*% if cell.rowend or not loop.nextitem is defined %*/
         /*% endif %*//*% endif %*//*% endfor %*/
-        /*% for row in range(rows) : %*//*$ random_matrix_cell(0, 1, row) $*//*% if loop.nextitem is defined %*/, /*% endif %*//*% endfor %*/,
-        /*$ 1 if rows == 2 else 0 $*/
+        /*% for row in range(rows) : %*//*$ 1 if row == rows - 1 else 2 * row + 1  $*//*% if loop.nextitem is defined %*/, /*% endif %*//*% endfor %*/,
+        1
       ]))
     })
   })
