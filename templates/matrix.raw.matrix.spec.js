@@ -223,6 +223,33 @@ describe('matrix.raw.matrix/*$ columns $*//*$ matrix_type $*/', function () {
     })
   })
 
+  /*% for component in range(rows) %*/
+  describe('#compute/*$ components[component] | upper $*/ComponentOfMultiplicationWithVector', function () {
+    it('compute only one component of the vector that is a result of a multiplication of this matrix with a vector', function () {
+      const matrixBuffer = new /*$ matrix_buffer_type $*/([
+        1, 2, 3, 4,
+        /*% for cell in cells() : %*//*% if cell.row == cell.column %*//*$ 1 $*//*% elif cell.column == rows - 1 %*//*$ cell.row + 1 $*//*% else %*//*$ 0 $*//*% endif %*/, /*% if cell.rowend or not loop.nextitem is defined %*/
+        /*% endif %*//*% endfor %*//*% for row in range(rows) : %*//*$ 1 if row == rows - 1 else row $*//*% if loop.nextitem is defined %*/, /*% endif %*//*% endfor %*/
+      ])
+
+      const resultBuffer = new /*$ matrix_buffer_type $*/(/*$ rows $*/)
+
+      matrix.multiplyWithVector(
+        matrixBuffer, 4,
+        matrixBuffer, 4 + /*$ rows * columns $*/,
+        resultBuffer, 0
+      )
+
+      expect(resultBuffer[/*$ component $*/]).toBe(
+        matrix.compute/*$ components[component] | upper $*/ComponentOfMultiplicationWithVector(
+          matrixBuffer, 4,
+          /*% for row in range(rows) : %*//*$ 1 if row == rows - 1 else row $*//*% if loop.nextitem is defined %*/, /*% endif %*//*% endfor %*/
+        )
+      )
+    })
+  })
+  /*% endfor %*/
+
   describe('#multiplyWithScalar', function () {
     it(
       'allows to multiply a matrix from a buffer with a given scalar',

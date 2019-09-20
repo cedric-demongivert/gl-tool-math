@@ -1,7 +1,7 @@
 /* eslint-env jest */
 
 import { Matrix/*$ columns $*//*$ matrix_type $*/ as Matrix } from '@library'
-import { Vector/*$ columns $*//*$ matrix_type $*/ } from '@library'
+import { Vector/*$ columns $*//*$ matrix_type $*/ as Vector } from '@library'
 
 describe('matrix.Matrix/*$ columns $*//*$ matrix_type $*/', function () {
   describe('#create', function () {
@@ -329,6 +329,28 @@ describe('matrix.Matrix/*$ columns $*//*$ matrix_type $*/', function () {
     })
   })
 
+  /*% for component in range(rows) %*/
+  describe('#compute/*$ components[component] | upper $*/ComponentOfMultiplicationWithVector', function () {
+    it('compute only one component of the vector that is a result of a multiplication of this matrix with a vector', function () {
+      const matrix = Matrix.create(
+        /*% for cell in cells() : %*//*% if cell.row == cell.column %*//*$ 1 $*//*% elif cell.column == rows - 1 %*//*$ cell.row + 1 $*//*% else %*//*$ 0 $*//*% endif %*/, /*% if cell.rowend or not loop.nextitem is defined %*/
+        /*% endif %*//*% endfor %*/
+      )
+
+      const vector = Vector.create(/*% for row in range(rows) : %*//*$ 1 if row == rows - 1 else row $*//*% if loop.nextitem is defined %*/, /*% endif %*//*% endfor %*/)
+      const result = Vector.create(/*% for row in range(rows) : %*/0/*% if loop.nextitem is defined %*/, /*% endif %*//*% endfor %*/)
+
+      matrix.multiplyWithVector(vector, result)
+
+      expect(result./*$ components[component] $*/).toBe(
+        matrix.compute/*$ components[component] | upper $*/ComponentOfMultiplicationWithVector(
+          /*% for row in range(rows) : %*/vector./*$ components[row] $*//*% if loop.nextitem is defined %*/, /*% endif %*//*% endfor %*/
+        )
+      )
+    })
+  })
+  /*% endfor %*/
+
   describe('#multiplyWithScalar', function () {
     it('allow to multiply the current matrix with a scalar', function () {
       const matrix = Matrix.create(
@@ -496,7 +518,7 @@ describe('matrix.Matrix/*$ columns $*//*$ matrix_type $*/', function () {
         /*% endif %*//*% endfor %*/
       )
 
-      const scale = new Vector/*$ columns $*//*$ matrix_type $*/()
+      const scale = new Vector()
 
       matrix.scale(/*% for column in range(columns) %*//*$ column + 1 $*//*% if loop.nextitem is defined %*/, /*% else %*//*% endif %*//*% endfor %*/)
       matrix.extractScale(scale)

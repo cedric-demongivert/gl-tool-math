@@ -288,6 +288,24 @@ export class Matrix/*$ columns $*//*$ matrix_type $*/ {
     return this
   }
 
+  /*% for component in range(rows) %*/
+  /**
+  * Multiply <$ columns $> by <$ rows $> <$ matrix_type_name $> buffered matrix with a <$ rows $> <$ matrix_type_name $> vector and return a component of the resulting vector.
+  *
+  <% for index in range(rows) %>* @param {number} <$ components[index] $> - Value of the <$ components[index] $> component of the vector to multiply.<% if loop.nextitem is defined %>
+  <% endif %><% endfor %>
+  *
+  * @return {number} A component of the resulting vector.
+  */
+  compute/*$ components[component] | upper $*/ComponentOfMultiplicationWithVector (
+    /*% for index in range(rows) %*//*$ components[index] $*//*% if loop.nextitem is defined %*/, /*% endif %*//*% endfor %*/
+  ) {
+    return matrix.compute/*$ components[component] | upper $*/ComponentOfMultiplicationWithVector(
+      this._buffer, 0, /*% for index in range(rows) %*//*$ components[index] $*//*% if loop.nextitem is defined %*/, /*% endif %*//*% endfor %*/
+    )
+  }
+  /*% endfor %*/
+
   /**
   * Multiply this matrix with a scalar.
   *
