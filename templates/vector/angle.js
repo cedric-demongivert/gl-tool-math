@@ -37,5 +37,5 @@ export function angleBetween (
   const aAngle = angle(leftBuffer, leftBufferOffset)
   const bAngle = angle(rightBuffer, rightBufferOffset)
 
-  return bAngle - aAngle
+  return bAngle > aAngle ? bAngle - aAngle : Math.PI * 2 + bAngle - aAngle
 }/*% endif %*/
