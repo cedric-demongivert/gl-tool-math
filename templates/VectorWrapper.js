@@ -398,7 +398,7 @@ export class Vector{{vector_dimension}}{{vector_type}} {{ '{' }}
   */
   angleWith (other) {{ '{' }}
     return vector.angleBetween(
-      this._buffer, 0, result.buffer, 0
+      this._buffer, 0, other.buffer, 0
     )
   {{ '}' }}
 
