@@ -300,8 +300,51 @@ describe('vector.raw.vector/*$ dimension $*//*$ vector_type $*/', function () {
       ]))
     })
   })
-  /*% endif %*/
-  describe('#minimum', function () {
+  /*% endif %*//*% if dimension == 2 %*/
+
+  describe('#clockwiseNormal', function () {
+    it('compute the clockwise normal', function () {
+      const vectorBuffer = new /*$ vector_buffer_type $*/([
+        7, 8, 5,
+        /*$ ', '.join(to_tokens(random_vector(0))) $*/
+      ])
+
+      vector.clockwiseNormal(
+        vectorBuffer, 3,
+        vectorBuffer, 2
+      )
+
+      expect(vectorBuffer).toEqual(new /*$ vector_buffer_type $*/([
+        7, 8,
+        /*$ random_vector_cell(0, 1) $*/,
+        /*$ -random_vector_cell(0, 0) $*/,
+        /*$ random_vector_cell(0, 1) $*/
+      ]))
+    })
+  })
+
+  describe('#counterClockwiseNormal', function () {
+    it('compute the counter-clockwise normal', function () {
+      const vectorBuffer = new /*$ vector_buffer_type $*/([
+        7, 8, 5,
+        /*$ ', '.join(to_tokens(random_vector(0))) $*/
+      ])
+
+      vector.counterClockwiseNormal(
+        vectorBuffer, 3,
+        vectorBuffer, 2
+      )
+
+      expect(vectorBuffer).toEqual(new /*$ vector_buffer_type $*/([
+        7, 8,
+        /*$ -random_vector_cell(0, 1) $*/,
+        /*$ random_vector_cell(0, 0) $*/,
+        /*$ random_vector_cell(0, 1) $*/
+      ]))
+    })
+  })
+
+  /*% endif %*/describe('#minimum', function () {
     it('clamp components of a vector to a minimum value', function () {
       const vectorBuffer = new /*$ vector_buffer_type $*/([
         7, 8, 9, 10,

@@ -47,7 +47,7 @@ for vector_type, vector_buffer_type, vector_type_name in types:
 
         GenerationResult(
             '\n\r'.join([
-                'export { ' + name + ' } from \'./' + name + '.js\'' for name in index
+                'export * from \'./' + name + '.js\'' for name in index
             ])
         ).write_as_source('./vector{0}{1}/index.js'.format(
             vector_dimension,

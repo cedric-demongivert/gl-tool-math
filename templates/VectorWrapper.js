@@ -357,8 +357,60 @@ export class Vector{{vector_dimension}}{{vector_type}} {{ '{' }}
     )
 
     return this
+  {{ '}' }}{% if vector_dimension == 2 %}
+
+  /**
+  * Compute the clockwise normal of this vector.
+  *
+  * @param {{ '{' }}Vector{{vector_dimension}}{{vector_type}}{{ '}' }} [result = this] - The result vector.
+  *
+  * @return {{ '{' }}Vector{{vector_dimension}}{{vector_type}}{{ '}' }} This vector instance for chaining purpose.
+  */
+  clockwiseNormal (result = this) {{ '{' }}
+    vector.clockwiseNormal(
+      this._buffer, 0, result.buffer, 0
+    )
+
+    return this
   {{ '}' }}
 
+  /**
+  * Compute the counter-clockwise normal of this vector.
+  *
+  * @param {{ '{' }}Vector{{vector_dimension}}{{vector_type}}{{ '}' }} [result = this] - The result vector.
+  *
+  * @return {{ '{' }}Vector{{vector_dimension}}{{vector_type}}{{ '}' }} This vector instance for chaining purpose.
+  */
+  counterClockwiseNormal (result = this) {{ '{' }}
+    vector.counterClockwiseNormal(
+      this._buffer, 0, result.buffer, 0
+    )
+
+    return this
+  {{ '}' }}
+
+  /**
+  * Compute the angle between this vector and another one and return the result in radians.
+  *
+  * @param {{ '{' }}Vector{{vector_dimension}}{{vector_type}}{{ '}' }} other - The other vector to use.
+  *
+  * @return {{ '{' }}number{{ '}' }} The angle between this vector and the other one in radians.
+  */
+  angleWith (other) {{ '{' }}
+    return vector.angleBetween(
+      this._buffer, 0, result.buffer, 0
+    )
+  {{ '}' }}
+
+  /**
+  * Compute the angle between the x axis vector and this one and return it.
+  *
+  * @return {{ '{' }}number{{ '}' }} The angle between the x axis vector and this one in radians.
+  */
+  get angle () {{ '{' }}
+    return vector.angle(this._buffer, 0)
+  {{ '}' }}
+  {% endif %}
   /**
   * Return the dot product of this vector with another one.
   *

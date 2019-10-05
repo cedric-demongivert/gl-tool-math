@@ -173,8 +173,34 @@ describe('vector.Vector/*$ dimension $*//*$ vector_type $*/', function () {
         /*% for index in range(dimension) %*//*$ random_vector_cell(0, index) - random_vector_cell(1, index) $*//*% if loop.nextitem is defined %*/, /*% endif %*//*% endfor %*/
       ]))
     })
+  })/*% if dimension == 2 %*/
+
+  describe('#clockwiseNormal', function () {
+    it('compute the clockwise normal', function () {
+      const left = Vector.create(/*$ ', '.join(to_tokens(random_vector(0))) $*/)
+
+      left.clockwiseNormal()
+
+      expect(left.buffer).toEqual(new /*$ vector_buffer_type $*/([
+        /*$ random_vector_cell(0, 1) $*/,
+        /*$ -random_vector_cell(0, 0) $*/
+      ]))
+    })
   })
 
+  describe('#counterClockwiseNormal', function () {
+    it('compute the counter-clockwise normal', function () {
+      const left = Vector.create(/*$ ', '.join(to_tokens(random_vector(0))) $*/)
+
+      left.counterClockwiseNormal()
+
+      expect(left.buffer).toEqual(new /*$ vector_buffer_type $*/([
+        /*$ -random_vector_cell(0, 1) $*/,
+        /*$ random_vector_cell(0, 0) $*/
+      ]))
+    })
+  })
+  /*% endif %*/
   describe('#multiplyWithScalar', function () {
     it('multiply by a scalar', function () {
       const vector = Vector.create(/*$ ', '.join(to_tokens(random_vector(0))) $*/)
