@@ -1,6 +1,7 @@
 module.exports = {
   "transform": {
-    "^.+\\.tsx?$": "ts-jest"
+    "^.+\\.tsx?$": "ts-jest",
+    "^.+\\.jsx?$": "babel-jest"
   },
   "testPathIgnorePatterns": [
     "./node_modules",

@@ -34,5 +34,7 @@
     "typedoc-webpack-plugin": "^1.1.4",
     "webpack": "^4.33.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "babel-jest": "^24.9.0"
+  }
 }
