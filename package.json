@@ -2,11 +2,11 @@
   "name": "@cedric-demongivert/gl-tool-math",
   "version": "0.4.0",
   "description": "A math library for webgl.",
-  "main": "./src/index.js",
+  "main": "./index.js",
   "types": "./types/index.d.ts",
   "scripts": {
     "test": "jest --coverage",
-    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js && tsc --project .",
+    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
     "preversion": "npm install && npm test",
     "version": "npm run build && git add --all",
     "postversion": "git push && git push --tags"

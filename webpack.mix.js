@@ -8,7 +8,8 @@ for (const name in pckg.dependencies) {
   externals.push(new RegExp(`^${name}(\\/.+)?$`))
 }
 
-mix.copy('LICENSE.md', 'dist')
+mix.ts('./src/index.ts', 'dist')
+   .copy('LICENSE.md', 'dist')
    .copy('package.json', 'dist')
    .copy('README.md', 'dist')
    .setPublicPath('dist')
