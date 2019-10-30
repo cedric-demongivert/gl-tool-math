@@ -24,7 +24,6 @@ build:
     - python3 -m pip install jinja2
     - ./generate.sh
     - npm run build
-    - npm run doc
     - cp -r doc dist/doc
   only:
     - tags
