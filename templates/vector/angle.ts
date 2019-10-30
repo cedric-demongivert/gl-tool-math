@@ -7,7 +7,7 @@
 * @return The angle between the x axis vector and the given one in radians.
 */
 export function angle (
-  leftBuffer /*$ vector_buffer_type $*/,
+  leftBuffer : /*$ vector_buffer_type $*/,
   leftBufferOffset : number
 ) : number {
   const a0 : number = leftBuffer[leftBufferOffset + 0]

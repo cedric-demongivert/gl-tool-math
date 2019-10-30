@@ -1,6 +1,6 @@
 /* eslint-env jest */
 
-import { Vector3f as Vector } from '@library'
+import { Vector3f as Vector } from '../src'
 
 describe('vector.Vector3f', function () {
   describe('#create', function () {
@@ -157,7 +157,7 @@ describe('vector.Vector3f', function () {
 
   describe('#buffer', function () {
     it('allows to get the underlying buffer of a vector', function () {
-      const buffer Float32Array = new Float32Array([
+      const buffer : Float32Array = new Float32Array([
         -1.0, 14.375, 16.375
       ])
 

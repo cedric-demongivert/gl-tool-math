@@ -1,6 +1,6 @@
 /* eslint-env jest */
 
-import { Vector2d as Vector } from '@library'
+import { Vector2d as Vector } from '../src'
 
 describe('vector.Vector2d', function () {
   describe('#create', function () {
@@ -83,7 +83,7 @@ describe('vector.Vector2d', function () {
 
   describe('#buffer', function () {
     it('allows to get the underlying buffer of a vector', function () {
-      const buffer Float64Array = new Float64Array([
+      const buffer : Float64Array = new Float64Array([
         -1.0, 14.375
       ])
 

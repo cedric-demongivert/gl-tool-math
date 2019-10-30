@@ -1,5 +1,7 @@
 import * as matrix from './matrix/*$ columns $*//*$ matrix_type $*//index'
-
+import { Vector/*$ rows $*//*$ matrix_type $*/ } from './Vector/*$ rows $*//*$ matrix_type $*/'/*% if rows > 2 %*/
+import { Vector/*$ rows - 1 $*//*$ matrix_type $*/ } from './Vector/*$ rows - 1 $*//*$ matrix_type $*/'
+/*% endif %*/
 export class Matrix/*$ columns $*//*$ matrix_type $*/ {
   /**
   * Create a new <$ columns $> by <$ rows $> <$ matrix_type_name $> matrix with initial content.
@@ -106,7 +108,7 @@ export class Matrix/*$ columns $*//*$ matrix_type $*/ {
   *
   * @param value - The new value of the cell at the column /*$ cell.column $*/ and row /*$ cell.row $*/.
   */
-  public set a/*$ cell.index $*/ (value) : number {
+  public set a/*$ cell.index $*/ (value : number) {
     this._buffer[/*$ cell.offset $*/] = value
   }
   /*% endfor %*/

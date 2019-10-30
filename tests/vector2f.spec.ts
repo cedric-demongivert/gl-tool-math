@@ -1,6 +1,6 @@
 /* eslint-env jest */
 
-import { vector2f as vector } from '@library'
+import { vector2f as vector } from '../src'
 
 describe('vector.raw.vector2f', function () {
   describe('#toString', function () {

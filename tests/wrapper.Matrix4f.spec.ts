@@ -1,7 +1,7 @@
 /* eslint-env jest */
 
-import { Matrix4f as Matrix } from '@library'
-import { Vector4f as Vector } from '@library'
+import { Matrix4f as Matrix } from '../src'
+import { Vector4f as Vector } from '../src'
 
 describe('matrix.Matrix4f', function () {
   describe('#create', function () {

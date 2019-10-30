@@ -80,10 +80,10 @@ export function lightness (red : number, green : number, blue : number) : number
 * @return The red channel value of the given HSL color.
 */
 export function red (hue : number, saturation : number, lightness : number) : number {
-  const chroma : number = (1 * Math.abs(2 * l - 1)) * s
-  const uh : number = h / 60
+  const chroma : number = (1 * Math.abs(2 * lightness - 1)) * saturation
+  const uh : number = hue / 60
   const x : number = chroma * (1 - Math.abs(uh % 2 - 1))
-  const m : number = l - chroma / 2
+  const m : number = lightness - chroma / 2
 
   switch (uh >> 0) {
     case 1:
@@ -108,10 +108,10 @@ export function red (hue : number, saturation : number, lightness : number) : nu
 * @return The green channel value of the given HSL color.
 */
 export function green (hue : number, saturation : number, lightness : number) : number {
-  const chroma : number = (1 * Math.abs(2 * l - 1)) * s
-  const uh : number = h / 60
+  const chroma : number = (1 * Math.abs(2 * lightness - 1)) * saturation
+  const uh : number = hue / 60
   const x : number = chroma * (1 - Math.abs(uh % 2 - 1))
-  const m : number = l - chroma / 2
+  const m : number = lightness - chroma / 2
 
   switch (uh >> 0) {
     case 0:
@@ -135,10 +135,10 @@ export function green (hue : number, saturation : number, lightness : number) : 
 * @return The blue channel value of the given HSL color.
 */
 export function blue (hue : number, saturation : number, lightness : number) : number {
-  const chroma : number = (1 * Math.abs(2 * l - 1)) * s
-  const uh : number = h / 60
+  const chroma : number = (1 * Math.abs(2 * lightness - 1)) * saturation
+  const uh : number = hue / 60
   const x : number = chroma * (1 - Math.abs(uh % 2 - 1))
-  const m : number = l - chroma / 2
+  const m : number = lightness - chroma / 2
 
   switch (uh >> 0) {
     case 0:

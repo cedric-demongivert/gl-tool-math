@@ -1,6 +1,6 @@
 /* eslint-env jest */
 
-import { Vector/*$ dimension $*//*$ vector_type $*/ as Vector } from '@library'
+import { Vector/*$ dimension $*//*$ vector_type $*/ as Vector } from '../src'
 
 describe('vector.Vector/*$ dimension $*//*$ vector_type $*/', function () {
   describe('#create', function () {
@@ -85,7 +85,7 @@ describe('vector.Vector/*$ dimension $*//*$ vector_type $*/', function () {
 
   describe('#buffer', function () {
     it('allows to get the underlying buffer of a vector', function () {
-      const buffer /*$ vector_buffer_type $*/ = new /*$ vector_buffer_type $*/([
+      const buffer : /*$ vector_buffer_type $*/ = new /*$ vector_buffer_type $*/([
         /*$ ', '.join(to_tokens(random_vector(0))) $*/
       ])
 

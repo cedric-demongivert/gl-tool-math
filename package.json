@@ -2,14 +2,13 @@
   "name": "@cedric-demongivert/gl-tool-math",
   "version": "0.2.2",
   "description": "A math library for webgl.",
-  "main": "index.js",
+  "main": "./src/index.js",
+  "types": "./types/index.d.ts",
   "scripts": {
     "test": "jest --coverage",
-    "doc": "esdoc",
-    "dev": "cross-env NODE_ENV=development webpack --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "preversion": "generate && npm install && npm test",
-    "version": "generate && npm run build && npm run doc && git add --all",
+    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js && tsc --project .",
+    "preversion": "npm install && npm test",
+    "version": "npm run build && git add --all",
     "postversion": "git push && git push --tags"
   },
   "repository": "https://gitlab.cedric-demongivert.com/gl-tool/glkit-math.git",
@@ -24,19 +23,16 @@
     ]
   },
   "devDependencies": {
-    "babel": "^6.23.0",
-    "babel-core": "^6.26.3",
-    "babel-jest": "^23.6.0",
-    "babel-plugin-module-resolver": "^3.1.1",
-    "babel-preset-env": "^1.7.0",
+    "@types/jest": "^24.0.12",
+    "@types/node": "^12.0.0",
     "cross-env": "^5.2.0",
-    "esdoc": "^1.1.0",
-    "esdoc-ecmascript-proposal-plugin": "^1.0.0",
-    "esdoc-external-ecmascript-plugin": "^1.0.0",
-    "esdoc-standard-plugin": "^1.0.0",
-    "jest": "^23.6.0",
-    "laravel-mix": "^2.1.14",
-    "regenerator-runtime": "^0.12.1"
+    "jest": "^24.7.1",
+    "laravel-mix": "^5.0.0",
+    "ts-jest": "^24.0.2",
+    "ts-loader": "^6.0.2",
+    "typedoc": "^0.14.2",
+    "typedoc-webpack-plugin": "^1.1.4",
+    "webpack": "^4.33.0"
   },
   "dependencies": {}
 }

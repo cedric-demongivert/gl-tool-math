@@ -1,6 +1,6 @@
 /* eslint-env jest */
 
-import { matrix3i as matrix } from '@library'
+import { matrix3i as matrix } from '../src'
 
 describe('matrix.raw.matrix3i', function () {
   describe('#toString', function () {

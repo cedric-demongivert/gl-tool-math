@@ -1,5 +1,6 @@
-import { Vector4f, Vector3f, Vector4d, Vector3d } from '..'
-
+"use strict";
+exports.__esModule = true;
+var __1 = require("..");
 /**
 * Return an hexadecimal representation of an rgba color.
 *
@@ -10,13 +11,13 @@ import { Vector4f, Vector3f, Vector4d, Vector3d } from '..'
 *
 * @return An hexadecimal representation of the given color.
 */
-export function encode (red : number, green : number, blue : number, alpha : number) {
-  return Math.round(red * 255) << 24 ^
-         Math.round(green * 255) << 16 ^
-         Math.round(blue * 255) << 8 ^
-         Math.round(alpha * 255) << 0
+function encode(red, green, blue, alpha) {
+    return Math.round(red * 255) << 24 ^
+        Math.round(green * 255) << 16 ^
+        Math.round(blue * 255) << 8 ^
+        Math.round(alpha * 255) << 0;
 }
-
+exports.encode = encode;
 /**
 * Return an hexadecimal representation of a 4D float vector.
 *
@@ -24,10 +25,10 @@ export function encode (red : number, green : number, blue : number, alpha : num
 *
 * @return An hexadecimal representation of the given color.
 */
-export function encodeVector4f (color : Vector4f) : number {
-  return encode(color.r, color.g, color.b, color.a)
+function encodeVector4f(color) {
+    return encode(color.r, color.g, color.b, color.a);
 }
-
+exports.encodeVector4f = encodeVector4f;
 /**
 * Return an hexadecimal representation of a 3D float vector.
 *
@@ -35,10 +36,10 @@ export function encodeVector4f (color : Vector4f) : number {
 *
 * @return An hexadecimal representation of the given color.
 */
-export function encodeVector3f (color : Vector3f) : number {
-  return encode(color.r, color.g, color.b, 1.0)
+function encodeVector3f(color) {
+    return encode(color.r, color.g, color.b, 1.0);
 }
-
+exports.encodeVector3f = encodeVector3f;
 /**
 * Return an hexadecimal representation of a vector 4d.
 *
@@ -46,10 +47,10 @@ export function encodeVector3f (color : Vector3f) : number {
 *
 * @return An hexadecimal representation of the given color.
 */
-export function encodeVector4d (color : Vector4d) : number {
-  return encode(color.r, color.g, color.b, color.a)
+function encodeVector4d(color) {
+    return encode(color.r, color.g, color.b, color.a);
 }
-
+exports.encodeVector4d = encodeVector4d;
 /**
 * Return an hexadecimal representation of a vector 3d.
 *
@@ -57,10 +58,10 @@ export function encodeVector4d (color : Vector4d) : number {
 *
 * @return An hexadecimal representation of the given color.
 */
-export function encodeVector3d (color : Vector3d) : number {
-  return encode(color.r, color.g, color.b, 1.0)
+function encodeVector3d(color) {
+    return encode(color.r, color.g, color.b, 1.0);
 }
-
+exports.encodeVector3d = encodeVector3d;
 /**
 * Decode the red channel value from an hexadecimal color and return it.
 *
@@ -68,10 +69,10 @@ export function encodeVector3d (color : Vector3d) : number {
 *
 * @return The red channel value of the given color.
 */
-export function decodeRed (hexadecimal : number) : number {
-  return (hexadecimal >> 24 & 255) / 255
+function decodeRed(hexadecimal) {
+    return (hexadecimal >> 24 & 255) / 255;
 }
-
+exports.decodeRed = decodeRed;
 /**
 * Decode the green channel value from an hexadecimal color and return it.
 *
@@ -79,10 +80,10 @@ export function decodeRed (hexadecimal : number) : number {
 *
 * @return The green channel value of the given color.
 */
-export function decodeGreen (hexadecimal : number) : number {
-  return (hexadecimal >> 16 & 255) / 255
+function decodeGreen(hexadecimal) {
+    return (hexadecimal >> 16 & 255) / 255;
 }
-
+exports.decodeGreen = decodeGreen;
 /**
 * Decode the blue channel value from an hexadecimal color and return it.
 *
@@ -90,10 +91,10 @@ export function decodeGreen (hexadecimal : number) : number {
 *
 * @return The blue channel value of the given color.
 */
-export function decodeBlue (hexadecimal : number) : number {
-  return (hexadecimal >> 8 & 255) / 255
+function decodeBlue(hexadecimal) {
+    return (hexadecimal >> 8 & 255) / 255;
 }
-
+exports.decodeBlue = decodeBlue;
 /**
 * Decode the alpha channel value from an hexadecimal color and return it.
 *
@@ -101,10 +102,10 @@ export function decodeBlue (hexadecimal : number) : number {
 *
 * @return The alpha channel value of the given color.
 */
-export function decodeAlpha (hexadecimal : number) : number {
-  return (hexadecimal >> 0 & 255) / 255
+function decodeAlpha(hexadecimal) {
+    return (hexadecimal >> 0 & 255) / 255;
 }
-
+exports.decodeAlpha = decodeAlpha;
 /**
 * Decode the given hexadecimal color as a Vector4f.
 *
@@ -113,18 +114,15 @@ export function decodeAlpha (hexadecimal : number) : number {
 *
 * @return The result vector.
 */
-export function decodeAsVector4f (
-  hexadecimal : number,
-  result : Vector4f = new Vector4f()
-) : Vector4f {
-  result.r = decodeRed(hexadecimal)
-  result.g = decodeGreen(hexadecimal)
-  result.b = decodeBlue(hexadecimal)
-  result.a = decodeAlpha(hexadecimal)
-
-  return result
+function decodeAsVector4f(hexadecimal, result) {
+    if (result === void 0) { result = new __1.Vector4f(); }
+    result.r = decodeRed(hexadecimal);
+    result.g = decodeGreen(hexadecimal);
+    result.b = decodeBlue(hexadecimal);
+    result.a = decodeAlpha(hexadecimal);
+    return result;
 }
-
+exports.decodeAsVector4f = decodeAsVector4f;
 /**
 * Decode the given hexadecimal color as a Vector4d.
 *
@@ -133,18 +131,15 @@ export function decodeAsVector4f (
 *
 * @return The result vector.
 */
-export function decodeAsVector4d (
-  hexadecimal : number,
-  result : Vector4d = new Vector4d()
-) : Vector4d {
-  result.r = decodeRed(hexadecimal)
-  result.g = decodeGreen(hexadecimal)
-  result.b = decodeBlue(hexadecimal)
-  result.a = decodeAlpha(hexadecimal)
-
-  return result
+function decodeAsVector4d(hexadecimal, result) {
+    if (result === void 0) { result = new __1.Vector4d(); }
+    result.r = decodeRed(hexadecimal);
+    result.g = decodeGreen(hexadecimal);
+    result.b = decodeBlue(hexadecimal);
+    result.a = decodeAlpha(hexadecimal);
+    return result;
 }
-
+exports.decodeAsVector4d = decodeAsVector4d;
 /**
 * Decode the given hexadecimal color as a Vector3f.
 *
@@ -153,17 +148,14 @@ export function decodeAsVector4d (
 *
 * @return The result vector.
 */
-export function decodeAsVector3f (
-  hexadecimal : number,
-  result : Vector3f = new Vector3f()
-) : Vector3f {
-  result.r = decodeRed(hexadecimal)
-  result.g = decodeGreen(hexadecimal)
-  result.b = decodeBlue(hexadecimal)
-
-  return result
+function decodeAsVector3f(hexadecimal, result) {
+    if (result === void 0) { result = new __1.Vector3f(); }
+    result.r = decodeRed(hexadecimal);
+    result.g = decodeGreen(hexadecimal);
+    result.b = decodeBlue(hexadecimal);
+    return result;
 }
-
+exports.decodeAsVector3f = decodeAsVector3f;
 /**
 * Decode the given hexadecimal color as a Vector3d.
 *
@@ -172,13 +164,11 @@ export function decodeAsVector3f (
 *
 * @return The result vector.
 */
-export function decodeAsVector3d (
-  hexadecimal : number,
-  result : Vector3d = new Vector3d()
-) : Vector3d {
-  result.r = decodeRed(hexadecimal)
-  result.g = decodeGreen(hexadecimal)
-  result.b = decodeBlue(hexadecimal)
-
-  return result
+function decodeAsVector3d(hexadecimal, result) {
+    if (result === void 0) { result = new __1.Vector3d(); }
+    result.r = decodeRed(hexadecimal);
+    result.g = decodeGreen(hexadecimal);
+    result.b = decodeBlue(hexadecimal);
+    return result;
 }
+exports.decodeAsVector3d = decodeAsVector3d;

@@ -35,7 +35,7 @@ export class Vector/*$ vector_dimension $*//*$ vector_type $*/ {
   * @return The cloned vector instance.
   */
   static clone (vector : Vector/*$ vector_dimension $*//*$ vector_type $*/) : Vector/*$ vector_dimension $*//*$ vector_type $*/ {
-    const result : Vector/*$ vector_dimension $*//*$ vector_type $*/ = new Vector/*$ vector_dimension $*//* $vector_type $*/()
+    const result : Vector/*$ vector_dimension $*//*$ vector_type $*/ = new Vector/*$ vector_dimension $*//*$ vector_type $*/()
     /*% for index in range(vector_dimension) %*/result./*$ components[index] $*/ = vector./*$ components[index] $*/
     /*% endfor %*/
     return result

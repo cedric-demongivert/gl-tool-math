@@ -1,7 +1,7 @@
 /* eslint-env jest */
 
-import { Matrix/*$ columns $*//*$ matrix_type $*/ as Matrix } from '@library'
-import { Vector/*$ columns $*//*$ matrix_type $*/ as Vector } from '@library'
+import { Matrix/*$ columns $*//*$ matrix_type $*/ as Matrix } from '../src'
+import { Vector/*$ columns $*//*$ matrix_type $*/ as Vector } from '../src'
 
 describe('matrix.Matrix/*$ columns $*//*$ matrix_type $*/', function () {
   describe('#create', function () {
