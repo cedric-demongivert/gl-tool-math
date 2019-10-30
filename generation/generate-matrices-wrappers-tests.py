@@ -23,17 +23,17 @@ types = {
 
 dimensions = [2, 3, 4]
 
-generator.use('matrix.MatrixWrapper.spec.js')
+generator.use('matrix.MatrixWrapper.spec.ts')
 
 for key, (buffer, name) in types.items() :
   for dimension in dimensions :
     print (
       '- generating {0}...'.format(
-        'tests/wrapper.Matrix{0}{1}.spec.js'.format(dimension, key)
+        'tests/wrapper.Matrix{0}{1}.spec.ts'.format(dimension, key)
       )
     )
     generator.generate_test(
-      'wrapper.Matrix{0}{1}.spec.js'.format(dimension, key),
+      'wrapper.Matrix{0}{1}.spec.ts'.format(dimension, key),
       primes = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29],
       matrix_type = key,
       matrix_type_name = name,

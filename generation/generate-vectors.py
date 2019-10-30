@@ -13,7 +13,7 @@ types = [
 
 dimensions = [2, 3, 4]
 
-templates = TemplateLoader('./templates/vector').templates('*.js')
+templates = TemplateLoader('./templates/vector').templates('*.ts')
 
 generator = Generator()
 
@@ -47,9 +47,9 @@ for vector_type, vector_buffer_type, vector_type_name in types:
 
         GenerationResult(
             '\n\r'.join([
-                'export * from \'./' + name + '.js\'' for name in index
+                'export * from \'./' + name + '\'' for name in index
             ])
-        ).write_as_source('./vector{0}{1}/index.js'.format(
+        ).write_as_source('./vector{0}{1}/index.ts'.format(
             vector_dimension,
             vector_type
         ))

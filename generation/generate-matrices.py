@@ -68,7 +68,7 @@ types = {
 
 dimensions = [2, 3, 4]
 
-templates = TemplateLoader('./templates/matrix').templates('*.js')
+templates = TemplateLoader('./templates/matrix').templates('*.ts')
 
 for matrix_type, matrix_buffer_type, matrix_type_name in types:
     for matrix_dimension in dimensions:
@@ -108,9 +108,9 @@ for matrix_type, matrix_buffer_type, matrix_type_name in types:
 
         GenerationResult(
             '\n\r'.join([
-                'export * from \'./' + name + '.js\'' for name in index_elements
+                'export * from \'./' + name + '\'' for name in index_elements
             ])
-        ).write_as_source('./matrix{0}{1}/index.js'.format(
+        ).write_as_source('./matrix{0}{1}/index.ts'.format(
             matrix_dimension,
             matrix_type
         ))

@@ -18,17 +18,17 @@ types = {
 
 dimensions = [2, 3, 4]
 
-generator.use('vector.raw.vector.spec.js')
+generator.use('vector.raw.vector.spec.ts')
 
 for key, (buffer, name) in types.items() :
   for dimension in dimensions :
     print (
       '- generating {0}...'.format(
-        'tests/vector{0}{1}.spec.js'.format(dimension, key)
+        'tests/vector{0}{1}.spec.ts'.format(dimension, key)
       )
     )
     generator.generate_test(
-      'vector{0}{1}.spec.js'.format(dimension, key),
+      'vector{0}{1}.spec.ts'.format(dimension, key),
       vector_type = key,
       vector_type_name = name,
       dimension = dimension,

@@ -25,7 +25,7 @@ def covariant_matrix (values, column, row, order) :
 
 generator.addFilter('covariant_matrix', covariant_matrix)
 
-generator.use('MatrixWrapper.js')
+generator.use('MatrixWrapper.ts')
 
 types = {
   "f": ("Float32Array", "float"),
@@ -44,12 +44,12 @@ for key, (buffer, name) in types.items() :
   for dimension in dimensions :
     print (
       '- generating {0}...'.format(
-        'src/Matrix{0}{1}.js'.format(dimension, key)
+        'src/Matrix{0}{1}.ts'.format(dimension, key)
       )
     )
 
     generator.generate(
-      'Matrix{0}{1}.js'.format(dimension, key),
+      'Matrix{0}{1}.ts'.format(dimension, key),
       matrix_type = key,
       matrix_type_name = name,
       matrix_elements = matrix_elements,
