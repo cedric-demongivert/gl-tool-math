@@ -867,6 +867,24 @@ describe('matrix.Matrix3i', function () {
     })
   })
 
+  describe('#clear', function () {
+    it('allow to fill a matrix with zeroes', function () {
+      const matrix : Matrix = Matrix.create(
+        -2, -18, 11,
+        -20, 13, 0,
+        -8, 9, 11
+      )
+
+      matrix.clear()
+
+      expect(matrix.buffer).toEqual(new Int32Array([
+        0, 0, 0, 
+        0, 0, 0, 
+        0, 0, 0
+      ]))
+    })
+  })
+
   describe('#equals', function () {
     it('allow to check if two matrices are equals', function () {
       const a : Matrix = Matrix.create(

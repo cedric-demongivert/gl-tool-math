@@ -553,6 +553,22 @@ describe('matrix.Matrix/*$ columns $*//*$ matrix_type $*/', function () {
     })
   })
 
+  describe('#clear', function () {
+    it('allow to fill a matrix with zeroes', function () {
+      const matrix : Matrix = Matrix.create(
+        /*% for row in print_rows(random_matrix(0)) : %*//*$ row $*//*% if loop.nextitem is defined %*/
+        /*% endif %*//*% endfor %*/
+      )
+
+      matrix.clear()
+
+      expect(matrix.buffer).toEqual(new /*$ matrix_buffer_type $*/([
+        /*% for cell in cells() : %*/0/*$ cell.separator $*//*% if cell.rowend %*/
+        /*% endif %*//*% endfor %*/
+      ]))
+    })
+  })
+
   describe('#equals', function () {
     it('allow to check if two matrices are equals', function () {
       const a : Matrix = Matrix.create(

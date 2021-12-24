@@ -107,7 +107,7 @@ for matrix_type, matrix_buffer_type, matrix_type_name in types:
                 ))
 
         GenerationResult(
-            '\n\r'.join([
+            '\r\n'.join([
                 'export * from \'./' + name + '\'' for name in index_elements
             ])
         ).write_as_source('./matrix{0}{1}/index.ts'.format(

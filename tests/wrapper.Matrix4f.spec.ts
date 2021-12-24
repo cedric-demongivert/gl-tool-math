@@ -1206,6 +1206,26 @@ describe('matrix.Matrix4f', function () {
     })
   })
 
+  describe('#clear', function () {
+    it('allow to fill a matrix with zeroes', function () {
+      const matrix : Matrix = Matrix.create(
+        -1.0, 14.375, 16.375, 6.125,
+        -17.875, 14.0, -7.5, -3.0,
+        9.25, 18.125, -7.5, 11.0,
+        -19.5, 21.5, 5.875, -12.5
+      )
+
+      matrix.clear()
+
+      expect(matrix.buffer).toEqual(new Float32Array([
+        0, 0, 0, 0, 
+        0, 0, 0, 0, 
+        0, 0, 0, 0, 
+        0, 0, 0, 0
+      ]))
+    })
+  })
+
   describe('#equals', function () {
     it('allow to check if two matrices are equals', function () {
       const a : Matrix = Matrix.create(

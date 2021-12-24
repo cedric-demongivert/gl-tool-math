@@ -435,6 +435,16 @@ export class Vector/*$ vector_dimension $*//*$ vector_type $*/ {
   }
 
   /**
+  * Set each component of this vector to zero.
+  *
+  * @return This vector instance for chaining purpose.
+  */
+  public clear () : Vector/*$ vector_dimension $*//*$ vector_type $*/ {
+    vector.clear(this._buffer, 0)
+    return this
+  }
+
+  /**
   * Return true if this vector is equal to another.
   *
   * @param left - Left operand vector.

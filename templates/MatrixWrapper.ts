@@ -534,6 +534,16 @@ export class Matrix/*$ columns $*//*$ matrix_type $*/ {
   }
 
   /**
+  * Fill this matrix with zeroes.
+  *
+  * @return The updated instance of this matrix for chaining purpose.
+  */
+  public clear () : Matrix/*$ columns $*//*$ matrix_type $*/ {
+    matrix.clear(this._buffer, 0)
+    return this
+  }
+
+  /**
   * Return a string representation of this matrix.
   *
   * @return A string representation of this matrix.

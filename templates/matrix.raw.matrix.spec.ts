@@ -602,6 +602,27 @@ describe('matrix.raw.matrix/*$ columns $*//*$ matrix_type $*/', function () {
     )
   })
 
+  describe('#clear', function () {
+    it(
+      'allows you to fill a matrix with zeroes',
+      function () {
+        const matrixBuffer : /*$ matrix_buffer_type $*/ = new /*$ matrix_buffer_type $*/([
+          7, 8, 9, 10,
+          /*% for row in print_rows(random_matrix(0)) : %*//*$ row $*//*% if loop.nextitem is defined %*/
+          /*% endif %*//*% endfor %*/
+        ])
+
+        matrix.clear(matrixBuffer, 4)
+
+        expect(matrixBuffer).toEqual(new /*$ matrix_buffer_type $*/([
+          7, 8, 9, 10,
+          /*% for row in print_rows([[0] * columns] * rows) : %*//*$ row $*//*% if loop.nextitem is defined %*/
+          /*% endif %*//*% endfor %*/
+        ]))
+      }
+    )
+  })
+
   describe('#extractScale', function () {
     it(
       'allow to extract a scale vector from a matrix',

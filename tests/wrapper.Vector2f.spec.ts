@@ -344,6 +344,17 @@ describe('vector.Vector2f', function () {
     })
   })
 
+  describe('#clear', function () {
+    it('set all components of the given vector to zero', function () {
+      const vector : Vector = Vector.create(-1.0, 14.375)
+      vector.clear()
+
+      expect(vector.buffer).toEqual(new Float32Array([
+        0, 0
+      ]))
+    })
+  })
+
   describe('#iterator', function () {
     it('iterate over each component of the vector', function () {
       const vector : Vector = Vector.create(-1.0, 14.375)
@@ -352,7 +363,6 @@ describe('vector.Vector2f', function () {
       for (const component of vector) {
         result.push(component)
       }
-
 
       expect(result).toEqual([
         -1.0, 14.375

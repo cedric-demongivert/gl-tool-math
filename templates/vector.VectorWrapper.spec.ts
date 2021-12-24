@@ -346,6 +346,17 @@ describe('vector.Vector/*$ dimension $*//*$ vector_type $*/', function () {
     })
   })
 
+  describe('#clear', function () {
+    it('set all components of the given vector to zero', function () {
+      const vector : Vector = Vector.create(/*$ ', '.join(to_tokens(random_vector(0))) $*/)
+      vector.clear()
+
+      expect(vector.buffer).toEqual(new /*$ vector_buffer_type $*/([
+        /*% for index in range(dimension) %*//*$ 0 $*//*% if loop.nextitem is defined %*/, /*% endif %*//*% endfor %*/
+      ]))
+    })
+  })
+
   describe('#iterator', function () {
     it('iterate over each component of the vector', function () {
       const vector : Vector = Vector.create(/*$ ', '.join(to_tokens(random_vector(0))) $*/)
@@ -354,7 +365,6 @@ describe('vector.Vector/*$ dimension $*//*$ vector_type $*/', function () {
       for (const component of vector) {
         result.push(component)
       }
-
 
       expect(result).toEqual([
         /*$ ', '.join(to_tokens(random_vector(0))) $*/

@@ -707,6 +707,29 @@ describe('matrix.raw.matrix3d', function () {
     )
   })
 
+  describe('#clear', function () {
+    it(
+      'allows you to fill a matrix with zeroes',
+      function () {
+        const matrixBuffer : Float64Array = new Float64Array([
+          7, 8, 9, 10,
+          -1.0, 14.375, 16.375,
+          6.125, -17.875, 14.0,
+          -7.5, -3.0, 9.25
+        ])
+
+        matrix.clear(matrixBuffer, 4)
+
+        expect(matrixBuffer).toEqual(new Float64Array([
+          7, 8, 9, 10,
+          0, 0, 0,
+          0, 0, 0,
+          0, 0, 0
+        ]))
+      }
+    )
+  })
+
   describe('#extractScale', function () {
     it(
       'allow to extract a scale vector from a matrix',

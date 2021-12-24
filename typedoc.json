@@ -1,0 +1,6 @@
+{
+  "entryPoints": ["./src"],
+  "out": "./dist/docs",
+  "readme": "none",
+  "excludePrivate": true
+}

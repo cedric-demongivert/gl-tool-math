@@ -363,6 +363,22 @@ describe('vector.raw.vector4d', function () {
     })
   })
 
+  describe('#clear', function () {
+    it('set each components of a vector to zero', function () {
+      const vectorBuffer : Float64Array = new Float64Array([
+        7, 8, 9, 10,
+        -1.0, 14.375, 16.375, 6.125
+      ])
+
+      vector.clear(vectorBuffer, 4)
+
+      expect(vectorBuffer).toEqual(new Float64Array([
+        7, 8, 9, 10,
+        0, 0, 0, 0,
+      ]))
+    })
+  })
+
   describe('#mix', function () {
     it('mix two vectors', function () {
       const vectorBuffer : Float64Array = new Float64Array([

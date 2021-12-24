@@ -427,6 +427,17 @@ describe('vector.Vector4d', function () {
     })
   })
 
+  describe('#clear', function () {
+    it('set all components of the given vector to zero', function () {
+      const vector : Vector = Vector.create(-1.0, 14.375, 16.375, 6.125)
+      vector.clear()
+
+      expect(vector.buffer).toEqual(new Float64Array([
+        0, 0, 0, 0
+      ]))
+    })
+  })
+
   describe('#iterator', function () {
     it('iterate over each component of the vector', function () {
       const vector : Vector = Vector.create(-1.0, 14.375, 16.375, 6.125)
@@ -435,7 +446,6 @@ describe('vector.Vector4d', function () {
       for (const component of vector) {
         result.push(component)
       }
-
 
       expect(result).toEqual([
         -1.0, 14.375, 16.375, 6.125

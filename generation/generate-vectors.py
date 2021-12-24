@@ -46,7 +46,7 @@ for vector_type, vector_buffer_type, vector_type_name in types:
                 ))
 
         GenerationResult(
-            '\n\r'.join([
+            '\r\n'.join([
                 'export * from \'./' + name + '\'' for name in index
             ])
         ).write_as_source('./vector{0}{1}/index.ts'.format(

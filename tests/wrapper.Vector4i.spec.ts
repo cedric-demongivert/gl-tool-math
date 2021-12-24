@@ -378,6 +378,17 @@ describe('vector.Vector4i', function () {
     })
   })
 
+  describe('#clear', function () {
+    it('set all components of the given vector to zero', function () {
+      const vector : Vector = Vector.create(-2, -18, 11, -20)
+      vector.clear()
+
+      expect(vector.buffer).toEqual(new Int32Array([
+        0, 0, 0, 0
+      ]))
+    })
+  })
+
   describe('#iterator', function () {
     it('iterate over each component of the vector', function () {
       const vector : Vector = Vector.create(-2, -18, 11, -20)
@@ -386,7 +397,6 @@ describe('vector.Vector4i', function () {
       for (const component of vector) {
         result.push(component)
       }
-
 
       expect(result).toEqual([
         -2, -18, 11, -20

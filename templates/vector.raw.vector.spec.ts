@@ -407,6 +407,22 @@ describe('vector.raw.vector/*$ dimension $*//*$ vector_type $*/', function () {
     })
   })
 
+  describe('#clear', function () {
+    it('set each components of a vector to zero', function () {
+      const vectorBuffer : /*$ vector_buffer_type $*/ = new /*$ vector_buffer_type $*/([
+        7, 8, 9, 10,
+        /*$ ', '.join(to_tokens(random_vector(0))) $*/
+      ])
+
+      vector.clear(vectorBuffer, 4)
+
+      expect(vectorBuffer).toEqual(new /*$ vector_buffer_type $*/([
+        7, 8, 9, 10,
+        /*% for index in range(dimension) %*//*$ 0 $*/,/*% if loop.nextitem is defined %*/ /*% endif %*//*% endfor %*/
+      ]))
+    })
+  })
+
   describe('#mix', function () {
     it('mix two vectors', function () {
       const vectorBuffer : /*$ vector_buffer_type $*/ = new /*$ vector_buffer_type $*/([

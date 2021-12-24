@@ -750,6 +750,31 @@ describe('matrix.raw.matrix4i', function () {
     )
   })
 
+  describe('#clear', function () {
+    it(
+      'allows you to fill a matrix with zeroes',
+      function () {
+        const matrixBuffer : Int32Array = new Int32Array([
+          7, 8, 9, 10,
+          -2, -18, 11, -20,
+          13, 0, -8, 9,
+          11, 15, 3, 18,
+          -11, 14, -4, 13
+        ])
+
+        matrix.clear(matrixBuffer, 4)
+
+        expect(matrixBuffer).toEqual(new Int32Array([
+          7, 8, 9, 10,
+          0, 0, 0, 0,
+          0, 0, 0, 0,
+          0, 0, 0, 0,
+          0, 0, 0, 0
+        ]))
+      }
+    )
+  })
+
   describe('#extractScale', function () {
     it(
       'allow to extract a scale vector from a matrix',

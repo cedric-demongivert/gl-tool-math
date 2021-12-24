@@ -407,6 +407,22 @@ describe('vector.raw.vector2f', function () {
     })
   })
 
+  describe('#clear', function () {
+    it('set each components of a vector to zero', function () {
+      const vectorBuffer : Float32Array = new Float32Array([
+        7, 8, 9, 10,
+        -1.0, 14.375
+      ])
+
+      vector.clear(vectorBuffer, 4)
+
+      expect(vectorBuffer).toEqual(new Float32Array([
+        7, 8, 9, 10,
+        0, 0,
+      ]))
+    })
+  })
+
   describe('#mix', function () {
     it('mix two vectors', function () {
       const vectorBuffer : Float32Array = new Float32Array([

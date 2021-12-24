@@ -283,6 +283,22 @@ describe('vector.raw.vector3i', function () {
     })
   })
 
+  describe('#clear', function () {
+    it('set each components of a vector to zero', function () {
+      const vectorBuffer : Int32Array = new Int32Array([
+        7, 8, 9, 10,
+        -2, -18, 11
+      ])
+
+      vector.clear(vectorBuffer, 4)
+
+      expect(vectorBuffer).toEqual(new Int32Array([
+        7, 8, 9, 10,
+        0, 0, 0,
+      ]))
+    })
+  })
+
   describe('#mix', function () {
     it('mix two vectors', function () {
       const vectorBuffer : Int32Array = new Int32Array([
