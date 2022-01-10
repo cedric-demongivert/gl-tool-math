@@ -1,6 +1,6 @@
 {
   "name": "@cedric-demongivert/gl-tool-math",
-  "version": "0.8.7",
+  "version": "0.8.8",
   "description": "A math library for webgl.",
   "main": "./index.js",
   "types": "./types/index.d.ts",
