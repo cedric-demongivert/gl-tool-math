@@ -12,7 +12,8 @@ mix.disableNotifications()
      'externals': externals,
      'output': {
        'library': package.name,
-       'libraryTarget': 'umd'
+       'libraryTarget': 'umd',
+       'globalObject': 'this'
      }
    })
    .ts('src/index.ts', 'dist')
